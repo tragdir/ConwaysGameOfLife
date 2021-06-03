@@ -21,6 +21,7 @@ public class Window extends JFrame implements MouseInputListener {
     public Window() {
         super("Conway's Game of Life");
         g = this.getGraphics();
+        System.out.println(this.getGraphicsConfiguration());
         canvas = new Canvas(this.getGraphicsConfiguration()) {
             public void paint(Graphics g) {
                 g2d = (Graphics2D) g;
