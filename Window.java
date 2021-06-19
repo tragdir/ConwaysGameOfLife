@@ -11,6 +11,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
 
 public class Window extends JFrame implements MouseInputListener {
     
@@ -26,12 +27,14 @@ public class Window extends JFrame implements MouseInputListener {
             public void paint(Graphics g) {
                 g2d = (Graphics2D) g;
                 // not too sure what to do with this
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
             }
         };
     }
 
     // updates the window each frame
-    private void update() {
+    public void update() {
         canvas.paint(g);
     }
 
