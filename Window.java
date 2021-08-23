@@ -6,79 +6,20 @@
 */
 
 import javax.swing.JFrame;
-import javax.swing.event.MouseInputListener;
-import java.awt.Canvas;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.MouseEvent;
-import java.awt.Color;
 
-public class Window extends JFrame implements MouseInputListener {
+public class Window extends JFrame {
     
-    private Canvas canvas;
-    private Graphics g;
-    private Graphics2D g2d;
+    private Board b;
 
     public Window() {
         super("Conway's Game of Life");
-        g = this.getGraphics();
-        System.out.println(this.getGraphicsConfiguration());
-        canvas = new Canvas(this.getGraphicsConfiguration()) {
-            public void paint(Graphics g) {
-                g2d = (Graphics2D) g;
-                // not too sure what to do with this
-                g2d.setColor(Color.BLACK);
-                g2d.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
-            }
-        };
+        b = new Board();
     }
 
     // updates the window each frame
     public void update() {
-        canvas.paint(g);
+        b.update(this.getGraphics());
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // toggle the cell
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // Do nothing
-        ;
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // Do nothing
-        ;
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // Do nothing
-        ;
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // Do nothing
-        ;
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        // Toggle each cell dragged through
-        
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        // Probably check the position of the mouse
-        
-    }
-
-    
     
 }
