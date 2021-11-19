@@ -1,39 +1,36 @@
-import java.util.Scanner;
+import java.lang.Thread;
 
 public class Main {
     public static void main(String[] args) {
         Board b1 = new Board();
         Board b2 = new Board();
         boolean isBoard1 = true;
-        Scanner s = new Scanner(System.in);
-
-        // System.out.print("Enter Coordinate to flip: ");
-        // String[] input = s.nextLine().split(" ");
-        
-        // while (input.length != 2) {
-        //     System.out.print("Enter a proper coordinate: ");
-        //     input = s.nextLine().split(" ");
-        // }
+        boolean isRunning = true;
         
         int generations = 0;
-        while(generations < 10) {
-            while (isBoard1) {
-                System.out.println(++generations);
-                System.out.println(b2);
-                translateToOther(b1, b2);
-                isBoard1 = !isBoard1;
-                clearConsole();
-                
+        while(isRunning) {
+            try {
+                Thread.sleep(1000);
+                while (isBoard1) {
+                    System.out.println(++generations);
+                    System.out.println(b2);
+                    translateToOther(b1, b2);
+                    isBoard1 = !isBoard1;
+                    
+                }
+                Thread.sleep(1000);
+                while (!isBoard1) {
+                    System.out.println(++generations);
+                    System.out.println(b1);
+                    translateToOther(b2, b1);
+                    isBoard1 = !isBoard1;
+                    
+                }
             }
-            while (!isBoard1) {
-                System.out.println(++generations);
-                System.out.println(b1);
-                translateToOther(b2, b1);
-                isBoard1 = !isBoard1;
-                
+            catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        s.close();
     }
 
     public static void translateToOther(Board b1, Board b2) {
@@ -65,24 +62,4 @@ public class Main {
         return count;
     }
 
-    public final static void clearConsole()
-{
-    try
-    {
-        final String os = System.getProperty("os.name");
-
-        if (os.contains("Windows"))
-        {
-            Runtime.getRuntime().exec("cls");
-        }
-        else
-        {
-            Runtime.getRuntime().exec("clear");
-        }
-    }
-    catch (final Exception e)
-    {
-        e.printStackTrace();
-    }
-}
 }
