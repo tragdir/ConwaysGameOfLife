@@ -1,2 +1,3 @@
+# ignoring my test files and the compiled class files
 *.class
 *.txt
